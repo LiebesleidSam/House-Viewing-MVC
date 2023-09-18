@@ -1,0 +1,30 @@
+@model IEnumerable<HouseViewingMVC.Models.House.HouseListItem>
+@{
+    ViewData["Title"] = "House Index";
+}
+<h1>House Index</h1>
+<p>
+    <a asp-action="Create">Create House</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Beds)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Baths)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ListingDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>

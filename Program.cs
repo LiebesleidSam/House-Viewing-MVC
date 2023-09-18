@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
+using HouseViewingMVC.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
