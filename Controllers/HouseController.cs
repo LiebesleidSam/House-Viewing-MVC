@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using HouseViewingMVC.Models;
-using HouseViewingMVC.Services.House;
+using HouseViewingMVC.Services.HouseServices;
 using HouseViewingMVC.Models.House;
 
 namespace HouseViewingMVC.Controllers
@@ -17,6 +17,15 @@ namespace HouseViewingMVC.Controllers
         {
             List<HouseListItem> houses = await _service.GetAllHouses();
             return View(houses);
+        }
+        public async Task<IActionResult> Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Create(HouseCreate model)
+        {
+            
         }
     }
 }

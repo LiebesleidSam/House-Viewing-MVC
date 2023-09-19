@@ -1,7 +1,7 @@
 using HouseViewingMVC.Data;
 using HouseViewingMVC.Models.House;
 
-namespace HouseViewingMVC.Services.House
+namespace HouseViewingMVC.Services.HouseServices
 {
     public interface IHouseService
     {

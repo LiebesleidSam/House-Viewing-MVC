@@ -1,8 +1,9 @@
 using HouseViewingMVC.Data;
 using HouseViewingMVC.Models.House;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.ObjectPool;
 
-namespace HouseViewingMVC.Services.House
+namespace HouseViewingMVC.Services.HouseServices
 {
     public class HouseService
     {
@@ -10,6 +11,20 @@ namespace HouseViewingMVC.Services.House
         public HouseService(HouseViewingDbContext context)
         {
             _context = context;
+        }
+        public async Task<bool> CreateHouse(HouseCreate model)
+        {
+            House house = new House()
+            {
+                Beds = model.Beds,
+                Baths = model.Baths,
+                Description = model.Description,
+                ListingDate = model.ListingDate
+            };
+
+            _context.Houses.Add(house);
+
+            return await _context.SaveChangesAsync() == 1;
         }
         public async Task<List<HouseListItem>> GetAllHouses()
         {

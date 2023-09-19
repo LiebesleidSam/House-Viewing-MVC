@@ -25,6 +25,27 @@
         </tr>
     </thead>
     <tbody>
-
+         @foreach (var item in Model)
+         {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Beds)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Baths)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ListingDate)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "House", new { id = item.Id}) |
+                    @Html.ActionLink("Details", "Details", "House", new { id = item.Id}) |
+                    @Html.ActionLink("Delete", "Delete", "House", new { id = item.Id})
+                </td>
+            </tr>
+         }
     </tbody>
 </table>
