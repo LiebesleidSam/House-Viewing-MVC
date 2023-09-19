@@ -25,7 +25,10 @@ namespace HouseViewingMVC.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(HouseCreate model)
         {
-            
+            if (!ModelState.IsValid)
+                return View(model);
+            await _service.CreateHouse(model);
+            return RedirectToAction(nameof(Index));
         }
     }
 }
