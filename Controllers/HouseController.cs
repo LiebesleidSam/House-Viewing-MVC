@@ -18,6 +18,12 @@ namespace HouseViewingMVC.Controllers
             List<HouseListItem> houses = await _service.GetAllHouses();
             return View(houses);
         }
+        [ActionName("Details")]
+        public async Task<IActionResult> House(int id)
+        {
+            HouseDetail house = await _service.GetHouseById(id);
+            return View(house);
+        }
         public async Task<IActionResult> Create()
         {
             return View();
@@ -28,6 +34,14 @@ namespace HouseViewingMVC.Controllers
             if (!ModelState.IsValid)
                 return View(model);
             await _service.CreateHouse(model);
+            return RedirectToAction(nameof(Index));
+        }
+        [HttpPut]
+        public async Task<IActionResult> Update(HouseUpdate model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+            await _service.UpdateHouse(model);
             return RedirectToAction(nameof(Index));
         }
     }

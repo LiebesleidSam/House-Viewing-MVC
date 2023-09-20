@@ -43,5 +43,28 @@ namespace HouseViewingMVC.Services.HouseServices
 
             return houses;
         }
+        public async Task<HouseDetail> GetHouseById(int id)
+        {
+            HouseDetail target = new();
+
+            foreach(var house in _context.Houses)
+            {
+                if(house.Id == id)
+                {
+                    target.Id = house.Id;
+                    target.Beds = house.Beds;
+                    target.Baths = house.Baths;
+                    target.Description = house.Description;
+                    target.ListingDate = house.ListingDate;
+                }
+            }
+
+            return target;
+        }
+        public async Task<bool> UpdateHouse(HouseUpdate model)
+        {
+            HouseDetail house = await GetHouseById(model.Id);
+            
+        }
     }
 }
