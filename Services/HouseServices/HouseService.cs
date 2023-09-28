@@ -43,9 +43,9 @@ namespace HouseViewingMVC.Services.HouseServices
 
             return houses;
         }
-        public async Task<HouseDetail> GetHouseById(int id)
+        public async Task<HouseListItem> GetHouseById(int id)
         {
-            HouseDetail target = new();
+            HouseListItem target = new();
 
             foreach(var house in _context.Houses)
             {
@@ -63,8 +63,32 @@ namespace HouseViewingMVC.Services.HouseServices
         }
         public async Task<bool> UpdateHouse(HouseUpdate model)
         {
-            HouseDetail house = await GetHouseById(model.Id);
-            
+            House target;
+
+            foreach(var house in _context.Houses)
+            {
+                if(house.Id == model.Id)
+                {
+                    target = house;
+                    target.Beds = model.Beds;
+                    target.Baths = model.Baths;
+                    target.Description = model.Description;
+                    target.ListingDate = model.ListingDate;
+                    return true;
+                }
+            }
+            return false;
+        }
+        public async Task<bool> DeleteHouse(int id)
+        {
+            foreach(var house in _context.Houses)
+            {
+                if(house.Id == id)
+                {
+                    _context.Houses.Remove(house);
+                }
+            }
+            return await _context.SaveChangesAsync() == 1;
         }
     }
 }

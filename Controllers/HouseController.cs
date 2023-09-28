@@ -21,7 +21,7 @@ namespace HouseViewingMVC.Controllers
         [ActionName("Details")]
         public async Task<IActionResult> House(int id)
         {
-            HouseDetail house = await _service.GetHouseById(id);
+            HouseListItem house = await _service.GetHouseById(id);
             return View(house);
         }
         public async Task<IActionResult> Create()
@@ -42,6 +42,12 @@ namespace HouseViewingMVC.Controllers
             if (!ModelState.IsValid)
                 return View(model);
             await _service.UpdateHouse(model);
+            return RedirectToAction(nameof(Index));
+        }
+        [HttpDelete]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _service.DeleteHouse(id);
             return RedirectToAction(nameof(Index));
         }
     }
