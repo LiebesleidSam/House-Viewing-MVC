@@ -12,6 +12,6 @@ namespace HouseViewingMVC.Models.House
         [MaxLength(200)]
         public string? Description { get; set; }
         [Required]
-        public DateTime ListingDate { get; set; }
+        public DateTime ListingDate { get; set; } = DateTime.Now;
     }
 }

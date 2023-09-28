@@ -5,7 +5,7 @@ using Microsoft.Extensions.ObjectPool;
 
 namespace HouseViewingMVC.Services.HouseServices
 {
-    public class HouseService
+    public class HouseService : IHouseService
     {
         private HouseViewingDbContext _context;
         public HouseService(HouseViewingDbContext context)
@@ -81,13 +81,13 @@ namespace HouseViewingMVC.Services.HouseServices
         }
         public async Task<bool> DeleteHouse(int id)
         {
-            foreach(var house in _context.Houses)
+            House? house = await _context.Houses.FindAsync(id);
+            
+            if(house != null)
             {
-                if(house.Id == id)
-                {
-                    _context.Houses.Remove(house);
-                }
+                _context.Houses.Remove(house);
             }
+            
             return await _context.SaveChangesAsync() == 1;
         }
     }

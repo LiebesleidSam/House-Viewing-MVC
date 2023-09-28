@@ -1,12 +1,15 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
 using HouseViewingMVC.Data;
+using HouseViewingMVC.Services.HouseServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<HouseViewingDbContext>(options => options.UseSqlServer(
     builder.Configuration.GetConnectionString("DefaultConnection")
 ));
+
+builder.Services.AddScoped<IHouseService,HouseService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
