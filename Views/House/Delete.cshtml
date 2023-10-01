@@ -1,0 +1,13 @@
+@model HouseViewingMVC.Models.House.HouseListItem
+
+@{
+    string title = "Delete";
+    ViewData["Title"] = title;
+}
+
+<h1>House was deleted successfully.</h1>
+<hr />
+
+<form asp-action="Delete">
+    <a asp-action="Index">Back to List</a>
+</form>

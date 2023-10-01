@@ -44,11 +44,14 @@ namespace HouseViewingMVC.Controllers
             await _service.UpdateHouse(model);
             return RedirectToAction(nameof(Index));
         }
-        [HttpDelete]
         public async Task<IActionResult> Delete(int id)
         {
-            await _service.DeleteHouse(id);
-            return RedirectToAction(nameof(Index));
+            bool delelteResult = await _service.DeleteHouse(id);
+            if (!delelteResult)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            return View();
         }
     }
 }
