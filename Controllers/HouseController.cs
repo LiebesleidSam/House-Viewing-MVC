@@ -22,6 +22,10 @@ namespace HouseViewingMVC.Controllers
         public async Task<IActionResult> House(int id)
         {
             HouseListItem house = await _service.GetHouseById(id);
+            if (house == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
             return View(house);
         }
         public async Task<IActionResult> Create()

@@ -1,0 +1,46 @@
+@model HouseViewingMVC.Models.House.HouseListItem
+
+@{
+    ViewData["Title"] = Model.Id;
+}
+
+<h1>House Details</h1>
+<hr />
+
+<dl class="row">
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Id)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Id)        
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Beds)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Beds)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Baths)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Baths)        
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Description)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Description)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.ListingDate)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.ListingDate)
+    </dd>
+</dl>
+
+<div>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</div>
