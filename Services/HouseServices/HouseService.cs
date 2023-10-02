@@ -61,29 +61,25 @@ namespace HouseViewingMVC.Services.HouseServices
 
             return target;
         }
-        public async Task<bool> UpdateHouse(HouseUpdate model)
+        public async Task<bool> UpdateHouse(int id, HouseUpdate model)
         {
-            House target;
+            House? house = await _context.Houses.FindAsync(id);
 
-            foreach(var house in _context.Houses)
+            if (house != null)
             {
-                if(house.Id == model.Id)
-                {
-                    target = house;
-                    target.Beds = model.Beds;
-                    target.Baths = model.Baths;
-                    target.Description = model.Description;
-                    target.ListingDate = model.ListingDate;
-                    return true;
-                }
+                house.Beds = model.Beds;
+                house.Baths = model.Baths;
+                house.Description = model.Description;
+                return true;
             }
+
             return false;
         }
         public async Task<bool> DeleteHouse(int id)
         {
             House? house = await _context.Houses.FindAsync(id);
             
-            if(house != null)
+            if (house != null)
             {
                 _context.Houses.Remove(house);
             }

@@ -40,12 +40,11 @@ namespace HouseViewingMVC.Controllers
             await _service.CreateHouse(model);
             return RedirectToAction(nameof(Index));
         }
-        [HttpPut]
-        public async Task<IActionResult> Update(HouseUpdate model)
+        public async Task<IActionResult> Edit(int id, HouseUpdate model)
         {
             if (!ModelState.IsValid)
                 return View(model);
-            await _service.UpdateHouse(model);
+            await _service.UpdateHouse(id, model);
             return RedirectToAction(nameof(Index));
         }
         public async Task<IActionResult> Delete(int id)
