@@ -70,6 +70,7 @@ namespace HouseViewingMVC.Services.HouseServices
                 house.Beds = model.Beds;
                 house.Baths = model.Baths;
                 house.Description = model.Description;
+                await _context.SaveChangesAsync();
                 return true;
             }
 
