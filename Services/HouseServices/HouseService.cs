@@ -61,6 +61,26 @@ namespace HouseViewingMVC.Services.HouseServices
 
             return target;
         }
+        public async Task<List<HouseListItem>> SearchHouses(int beds, double baths)
+        {
+            List<HouseListItem> houses = new();
+
+            foreach(var house in _context.Houses)
+            {
+                if (house.Beds == beds && house.Baths == baths)
+                {
+                    houses.Add(new HouseListItem(){
+                        Id = house.Id,
+                        Beds = house.Beds,
+                        Baths = house.Baths,
+                        Description = house.Description,
+                        ListingDate = house.ListingDate
+                    });
+                }
+            }
+
+            return houses;
+        }
         public async Task<bool> UpdateHouse(int id, HouseUpdate model)
         {
             House? house = await _context.Houses.FindAsync(id);

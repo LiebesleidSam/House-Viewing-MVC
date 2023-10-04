@@ -8,6 +8,7 @@ namespace HouseViewingMVC.Services.HouseServices
         Task<bool> CreateHouse(HouseCreate model);
         Task<List<HouseListItem>> GetAllHouses();
         Task<HouseListItem> GetHouseById(int id);
+        Task<List<HouseListItem>> SearchHouses(int beds, double baths);
         Task<bool> UpdateHouse(int id, HouseUpdate model);
         Task<bool> DeleteHouse(int id);
     }
