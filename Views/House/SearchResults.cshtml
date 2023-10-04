@@ -1,14 +1,9 @@
 @model IEnumerable<HouseViewingMVC.Models.House.HouseListItem>
 @{
-    ViewData["Title"] = "House Index";
+    ViewData["Title"] = "House Search Results";
 }
-<h1>House Index</h1>
-<p>
-    <a asp-action="Create">Create House</a>
-</p>
-<p>
-    <a asp-action="Search">Search Houses</a>
-</p>
+<h1>House Search Results</h1>
+
 <table class="table">
     <thead>
         <tr>
@@ -52,3 +47,7 @@
          }
     </tbody>
 </table>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

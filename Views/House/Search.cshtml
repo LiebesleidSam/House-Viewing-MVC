@@ -1,51 +1,25 @@
-@model IEnumerable<HouseViewingMVC.Models.House.HouseListItem>
+@model HouseViewingMVC.Models.House.HouseListItem
 @{
     ViewData["Title"] = "House Search";
 }
 <h1>House Search</h1>
-<p>
-    <a asp-action="Create">Create House</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Beds)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Baths)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ListingDate)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-         @foreach (var item in Model)
-         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Beds)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Baths)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ListingDate)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", "House", new { id = item.Id}) |
-                    @Html.ActionLink("Details", "Details", "House", new { id = item.Id}) |
-                    @Html.ActionLink("Delete", "Delete", "House", new { id = item.Id})
-                </td>
-            </tr>
-         }
-    </tbody>
-</table>
+<form asp-action="SearchResults">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Beds" class="control-label"></label>
+        <input asp-for="Beds" class="form-control" />
+        <span asp-validation-for="Beds" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Baths" class="control-label"></label>
+        <input asp-for="Baths" class="form-control" />
+        <span asp-validation-for="Baths" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Search" class="btn btn-primary" />
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
