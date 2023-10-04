@@ -56,7 +56,11 @@ namespace HouseViewingMVC.Controllers
             }
             return View();
         }
-        public async Task<IActionResult> Search(int beds, double baths)
+        public async Task<IActionResult> Search()
+        {
+            return View();
+        }
+        public async Task<IActionResult> SearchResults(int beds, double baths)
         {
             List<HouseListItem> houses = await _service.SearchHouses(beds, baths);
             return View(houses);
